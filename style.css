@@ -447,7 +447,7 @@ body {
 
 @media screen and (min-width: 750px) {
   .others {
-    width: 100%;
+    width: 750px;
   }
   .others__contents {
     -webkit-box-orient: horizontal;
