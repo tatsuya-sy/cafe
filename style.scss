@@ -1,0 +1,588 @@
+$cMain: #404142; //メインカラー
+$cWhite: white;
+$cBlack: black;
+
+* {
+  box-sizing: border-box;
+
+  @media screen and (min-width: 1200px) {
+    letter-spacing: 0.7px;
+  }
+}
+
+body {
+  font-family: Arial;
+}
+
+.container {
+  padding: 0 4%;
+
+  @media screen and (min-width: 1200px) {
+    padding: 0;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+}
+
+.main-view {
+  //文字を見やすくする
+  background-image: url("images/main-view.jpg");
+  background-color: rgba(0, 0, 0, 0.404);
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 88.4vw;
+  font-family: "Cambria Math";
+  position: relative;
+
+  header {
+    padding-top: 34px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    .logo {
+      a {
+        font-size: 24px;
+        color: $cWhite;
+        opacity: 0.7;
+        position: relative;
+        //ホバーしたときにわかりやすく
+        &::after {
+          content: "";
+          background-color: $cWhite;
+          width: 0%;
+          height: 2px;
+          position: absolute;
+          left: 0;
+          bottom: -5px;
+          transition: all 0.3s;
+        }
+        &:hover {
+          opacity: 1;
+          &::after {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .list {
+      display: flex;
+      flex-direction: row;
+
+      .item {
+        margin-right: 18px;
+        &:last-child {
+          margin-right: 0;
+        }
+
+        a {
+          font-size: 18px;
+          color: $cWhite;
+          opacity: 0.7;
+          position: relative;
+          //ホバーしたときにわかりやすく
+          &::after {
+            content: "";
+            width: 0%;
+            height: 2px;
+            background-color: $cWhite;
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            transition: all 0.3s;
+          }
+
+          &:hover {
+            opacity: 1;
+            &::after {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .text-box {
+    color: $cWhite;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    line-height: 1.4;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+
+    h1 {
+      font-size: 32px;
+      font-weight: 100;
+    }
+    h2 {
+      font-size: 18px;
+      font-weight: 100;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    header {
+      .logo {
+        a {
+          font-size: 40px;
+        }
+      }
+
+      .list {
+        .item {
+          a {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+
+    .text-box {
+      h1 {
+        font-size: 40px;
+      }
+      h2 {
+        font-size: 22px;
+      }
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 100vw;
+    height: 85vh;
+
+    header {
+      padding-top: 40px;
+
+      .logo {
+        a {
+          font-size: 50px;
+        }
+      }
+
+      .list {
+        .item {
+          margin-right: 45px;
+          &:last-child {
+            margin-right: 0;
+          }
+
+          a {
+            font-size: 30px;
+          }
+        }
+      }
+    }
+
+    .text-box {
+      h1 {
+        font-size: 68px;
+        font-weight: 100;
+      }
+      h2 {
+        font-size: 42px;
+        font-weight: 100;
+      }
+    }
+  }
+}
+
+.section-title {
+  font-size: 26px;
+  font-family: "Cambria Math";
+  color: black;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  font-weight: 300;
+  text-align: center;
+
+  @media screen and (min-width: 750px) {
+    font-size: 35px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    font-size: 55px;
+    margin-bottom: 90px;
+  }
+}
+
+.about {
+  width: 304px;
+  margin: 0 auto;
+  margin-top: 40px;
+
+  &__content {
+    //グリッドでわかりやすく
+    display: grid;
+    grid-template:
+      ".. top      top       .." auto
+      ".. ....     ....      .." 70px
+      ".. center   center    .." auto
+      ".. ....     ....      .." 70px
+      ".. bot-left bot-right .." auto
+      / auto 1fr 1fr auto;
+  }
+
+  &__top {
+    grid-area: top;
+  }
+
+  &__center {
+    grid-area: center;
+  }
+
+  &__bottom--left {
+    grid-area: bot-left;
+  }
+
+  &__bottom--right {
+    grid-area: bot-right;
+  }
+
+  .image {
+    overflow: hidden;
+    img {
+      width: 100%;
+      vertical-align: top;
+      transition: all 0.4s;
+
+      &:hover {
+        transform: scale(1.2); //ホバーしたことをわかりやすく
+      }
+    }
+  }
+
+  .text-box {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: $cMain;
+    color: $cWhite;
+    line-height: 1.5;
+
+    h3 {
+      font-size: 10px;
+      font-weight: 200;
+    }
+
+    p {
+      font-size: 14px;
+      font-weight: bold;
+    }
+  }
+
+
+  @media screen and (min-width: 1200px) {
+    width: 100%;
+    margin-top: 120px;
+
+    .about__content {
+      display: grid;
+      grid-template:
+        "... left  rig-top     rig-top     ..." auto
+        "... left  rig-bot-lef rig-bot-rig ..." auto
+        / auto 2fr 1fr 1fr auto;
+    }
+
+    .left {
+      grid-area: left;
+      display: flex;
+      flex-direction: column;
+      margin-right: 1px;
+
+      .image {
+        flex: 1;
+        img {
+          height: 100%;
+        }
+      }
+    }
+    .right-top {
+      grid-area: rig-top;
+    }
+    .right-bottom-left {
+      grid-area: rig-bot-lef;
+    }
+    .right-bottom-right {
+      grid-area: rig-bot-rig;
+    }
+
+    .text-box {
+      h3 {
+        font-size: 14px;
+      }
+      p {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+.make {
+  margin: 130px auto;
+  width: 304px;
+  .list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .item {
+      margin-bottom: 20px;
+      img {
+        width: 200px;
+        height: 272px;
+      }
+    }
+  }
+
+  .text-box {
+    text-align: left;
+    font-size: 14px;
+  }
+
+  //タブレットサイズに合わせる 写真を2つずつにする
+  @media screen and (min-width: 750px) {
+    width: 450px;
+
+    .list {
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .text-box {
+      font-size: 18px;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 100%;
+    margin: 350px auto;
+
+    .list {
+      flex-direction: row;
+      justify-content: space-around;
+    }
+
+    .text-box {
+      font-size: 20px;
+    }
+  }
+}
+
+.others {
+  width: 351px;
+  margin: 0 auto;
+  margin-bottom: 120px;
+  &__contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .top {
+      margin-bottom: 60px;
+      .text-box {
+        line-height: 1.2;
+        margin-bottom: 34px;
+
+        h3 {
+          font-size: 16px;
+          font-weight: bold;
+        }
+
+        p {
+          font-size: 14px;
+        }
+      }
+    }
+
+    .bottom {
+      .text-box {
+        background-color: $cMain;
+        width: 176px;
+        font-size: 8px;
+        color: $cWhite;
+        padding: 6px;
+        line-height: 1.2;
+      }
+    }
+
+    .image {
+      text-align: center;
+
+      img {
+        width: 176px;
+        vertical-align: top;
+      }
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    width: 100%;
+
+    &__contents {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+      .left {
+        width: 300px;
+        margin-bottom: 0;
+        .text-box {
+          line-height: 1.3;
+          margin-bottom: 35px;
+
+          h3 {
+            font-size: 24px;
+            font-weight: 300;
+          }
+
+          p {
+            font-size: 18px;
+          }
+        }
+
+        .image {
+          text-align: left;
+        }
+      }
+
+      .right {
+        .text-box {
+          background-color: $cMain;
+          width: 300px;
+          font-size: 14px;
+          padding: 10px 14px;
+          line-height: 1.2;
+        }
+      }
+
+      .image {
+        img {
+          width: 300px;
+          vertical-align: top;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 100%;
+    padding: 0 75px;
+    margin-bottom: 210px;
+
+    &__contents {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+      .left {
+        width: 400px;
+        margin-bottom: 0;
+        .text-box {
+          line-height: 1.3;
+          margin-bottom: 105px;
+
+          h3 {
+            font-size: 35px;
+            font-weight: 200;
+          }
+
+          p {
+            font-size: 20px;
+          }
+        }
+      }
+
+      .right {
+        .text-box {
+          background-color: $cMain;
+          width: 400px;
+          font-size: 20px;
+          color: $cWhite;
+          padding: 30px 24px;
+          line-height: 1.2;
+        }
+      }
+
+      .image {
+        text-align: left;
+
+        img {
+          width: 400px;
+          vertical-align: top;
+        }
+      }
+    }
+  }
+
+}
+
+footer {
+  .wrapper {
+    background-color: $cMain;
+    padding: 30px 4%;
+  }
+
+  .text-box {
+    text-align: center;
+    color: $cWhite;
+    margin: 0 auto;
+    line-height: 1.3;
+
+    h3 {
+      font-family: Georgia;
+      font-size: 20px;
+      font-weight: 200;
+    }
+
+    p {
+      font-size: 8px;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .wrapper {
+      background-color: $cMain;
+      padding: 0;
+    }
+
+    .text-box {
+      padding: 30px 0;
+      width: 550px;
+      margin: 0 auto;
+      line-height: 1.5;
+
+      h3 {
+        font-size: 30px;
+      }
+
+      p {
+        font-size: 14px;
+      }
+    }
+
+  }
+  @media screen and (min-width: 1200px) {
+    .wrapper {
+      padding: 0;
+    }
+
+    .text-box {
+      padding: 70px 0;
+      width: 660px;
+      margin: 0 auto;
+
+      h3 {
+        font-size: 40px;
+      }
+
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+}
